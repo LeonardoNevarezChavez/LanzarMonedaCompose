@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Lanzar moneda</string>
+    <string name="titulo">Lanzar moneda</string>
+    <string name="roll">Roll</string>
+    <string name="moneda_desc">Imagen de una moneda</string>
+    <string name="aguila">Aguilas: </string>
+    <string name="sello">Sellos: </string>
+
+    <!-- Menú de opciones -->
+    <string name="item_settings">Configuración</string>
+    <string name="item_logout">Salir</string>
+    <string name="item_about">Acerca de</string>
+    <string name="item_favorite">Favoritos</string>
+    <string name="item_more_vert">Más opciones</string>
+
+
+    <!-- Actividad About -->
+    <string name="title_activity_about">Acerca de</string>
+    <string name="programador">Leonardo Nevarez Chavez</string>
+    <string name="button_regresar">Regresar</string>
+
+</resources>
