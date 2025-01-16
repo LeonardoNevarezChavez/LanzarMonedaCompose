@@ -8,14 +8,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -49,6 +46,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.sp
+
+import java.util.Locale as Locate
 
 class MainActivity : ComponentActivity() {
 
@@ -197,8 +196,8 @@ class MainActivity : ComponentActivity() {
                 aguilas_porciento = ((aguilas / (aguilas + sellos).toFloat()) * 100).toDouble()
                 sellos_porciento = ((sellos / (aguilas + sellos).toFloat()) * 100).toDouble()
 
-                aguilas_porciento = String.format("%.2f", aguilas_porciento).toDouble()
-                sellos_porciento = String.format("%.2f", sellos_porciento).toDouble()
+                aguilas_porciento = String.format(Locate.getDefault(), "%.2f", aguilas_porciento).toDouble()
+                sellos_porciento = String.format(Locate.getDefault(), "%.2f", sellos_porciento).toDouble()
             })
             {
                 Text(
