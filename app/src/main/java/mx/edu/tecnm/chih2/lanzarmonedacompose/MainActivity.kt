@@ -52,6 +52,9 @@ import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
 
+    /*
+    Clase principal de la aplicación "Lanzar Moneda"
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -80,6 +83,9 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun MonedaButtonAndImage(modifier: Modifier = Modifier) {
+        // Función que define la UI de la aplicación
+
+        // Variables para almacenar el resultado del lanzamiento de la moneda
         var result by remember { mutableStateOf(1) }
         var aguilas by remember { mutableStateOf(0) }
         var sellos by remember { mutableStateOf(0) }
@@ -89,6 +95,7 @@ class MainActivity : ComponentActivity() {
         var showMenu by remember { mutableStateOf(false) }
         val context = LocalContext.current
 
+        // Actualizar imagen según resultado del lanzamiento de la moneda
         val imageResource = when (result) {
             1 -> {
                 R.drawable.aguila
@@ -101,11 +108,13 @@ class MainActivity : ComponentActivity() {
             else -> R.drawable.aguila
         }
 
+        // El  nivel de Composición principal es una columna que contiene un menú superior
         Column(
             modifier = modifier,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+            // Menú superior con opciones en un TopAppBar
             TopAppBar(
                 title = { Text(text = getString(R.string.titulo)) },
                 actions = {
@@ -130,6 +139,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
+                    // Elementos del menu desplegable
                     DropdownMenu(
                         expanded = showMenu,
                         onDismissRequest = { showMenu = false }
@@ -157,12 +167,14 @@ class MainActivity : ComponentActivity() {
                 }
             )
 
+            // Se define la UI de la aplicación
             Text(
                 stringResource(R.string.titulo),
                 fontSize = 38.sp,
                 modifier = Modifier.padding(top = 46.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))
+            // La imagen de la moneda se muestra en el centro de la pantalla
             Image(
                 painter = painterResource(imageResource),
                 contentDescription = stringResource(R.string.moneda_desc),
@@ -172,6 +184,8 @@ class MainActivity : ComponentActivity() {
                     .width(150.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
+            // Botón para lanzar la moneda que genera un número aleatorio entre 1 y 2
+            // y actualiza el resultado y las estadísticas de aguilas y sellos
             Button(onClick = {
                 result = (1..2).random()
                 if (result == 1) {
@@ -193,6 +207,8 @@ class MainActivity : ComponentActivity() {
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
+            // Muestra las estadísticas de aguilas y sellos en dos columnas
+
             Text(
                 stringResource(id = R.string.aguila)
                         + " " + aguilas.toString() + "  --  " +
@@ -201,6 +217,7 @@ class MainActivity : ComponentActivity() {
                 fontSize = 24.sp
             )
             Spacer(modifier = Modifier.height(16.dp))
+            // Barra de progreso para mostrar el porcentaje de aguilas y sellos
             LinearProgressIndicator(
                 progress = { (aguilas_porciento / 100).toFloat() },
                 color = Color.Blue,
@@ -228,6 +245,5 @@ class MainActivity : ComponentActivity() {
             )
         }
     }
-    // CRTL + ALT + L   para identar código
-    // Menu:  Code |   Reformat Code
+
 }
